@@ -1,0 +1,20 @@
+{
+  "password": [
+    {
+      "id": 1,
+      "url": "http://erwar.id",
+      "username": "erwin",
+      "password": "erwin",
+      "created": "",
+      "updated": ""
+    },
+    {
+      "id": 2,
+      "url": "https://github.com",
+      "username": "erwinwahyura",
+      "password": "apaajahayoapakepo",
+      "created": "12-27-2000",
+      "updated": ""
+    }
+  ]
+}
