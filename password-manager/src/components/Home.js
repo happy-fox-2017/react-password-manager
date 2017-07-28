@@ -13,7 +13,6 @@ import loading from '../loading.png'
 class Home extends Component {
   componentDidMount() {
     this.props.GetPasswordList()
-    console.log('ada ga nih: ', this.props.GetPasswordList());
   }
 
   render() {
@@ -46,19 +45,10 @@ class Home extends Component {
                 </tr>
               </thead>
               <tbody>
-
               {
-                this.props.dataPass === ""
+                this.props.dataPass === "" || this.props.dataPass === "wait"
                 ?
-                "wait.."
-                :
-                this.props.dataPass === "wait"
-                ?
-                <div>
-                  <img src={loading} className="App-logo" alt="logo"
-
-                  />
-                </div>
+                  <img src={loading} className="App-logo" alt="logo"/>
                 :
                 this.props.dataPass.map((listPassword, index) => {
                   return (
@@ -73,10 +63,10 @@ class Home extends Component {
                       <td className="tdButton"><button onClick={(id) => this.props.hapusListPassword(listPassword.id) } className="btn btn-danger-delete"><span className="glyphicon glyphicon-trash"></span> Delete</button></td>
                     </tr>
 
-
                   )
                 })
               }
+
               </tbody>
 
             </table>
@@ -88,7 +78,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('ini map : ', state);
   return {
     dataPass: state.getStorePassword.StorePassword
   }

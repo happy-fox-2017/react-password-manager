@@ -32,8 +32,8 @@ export const fetchPasswordAsync = (newPassword) => {
   return (dispatch, getState) => {
     const apiUrl = 'http://localhost:3000/password'
     Axios.post(apiUrl, {...newPassword, id: chance().guid(), created: date_converter(new Date()), updated: date_converter(new Date())})
-      .then( (resp) => {
-        dispatch(fetchPassword(resp.data))
+      .then((resp) => {
+        dispatch(PasswordGetter())
       })
       .catch((err) => {
         console.log(err)
@@ -62,7 +62,7 @@ export const getSearchByURL = (name) => {
     const apiUrl = 'http://localhost:3000/password?url='
     Axios.get(apiUrl + name)
       .then((resp) => {
-        dispatch(fetchPassword())
+        dispatch(fetchPassword(resp.data))
       })
       .catch((err) => {
         console.log(err)

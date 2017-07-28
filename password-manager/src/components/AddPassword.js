@@ -3,10 +3,11 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { connect } from 'react-redux'
 import '../stylesheets/AddPassword.css'
-import { fetchPasswordAsync } from '../actions'
+import { fetchPasswordAsync, PasswordGetter } from '../actions'
 import {
   Link
 } from 'react-router-dom'
+import store from '../stores'
 
 class AddPassword extends Component {
   constructor() {
@@ -20,6 +21,9 @@ class AddPassword extends Component {
         updated: ''
       }
     }
+  }
+  getIinitalState () {
+    store.dispatch(PasswordGetter())
   }
   render() {
     return (
@@ -47,13 +51,13 @@ class AddPassword extends Component {
       		    </div>
 
       		    <div className="form-group">
-    		        <button
-                  type="submit"
-                  className="btn btn-primary"
-                  onClick={(e) => this.props.tambahListPassword(this.state.newListPassword)}
-                >
-    		            Create
-    		        </button>
+      		        <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={(e) => this.props.tambahListPassword(this.state.newListPassword)}
+                  >
+      		            Create
+      		        </button>
                 <Link to="/home">
       		        <button
                     type="submit"

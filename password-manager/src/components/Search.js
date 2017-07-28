@@ -1,10 +1,9 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 import { connect } from 'react-redux'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import '../stylesheets/Search.css'
-import loading from '../loading.png'
+// import loading from '../loading.png'
 
 import { getSearchByURL } from '../actions'
 
@@ -14,15 +13,9 @@ const Search = (props) => {
       <form action="" className="search-form">
         <div className="form-group has-feedback">
     		<label className="sr-only">Search</label>
-          {
-            props.dataPass === "wait"
-            ?
-            <img src={loading} className="App-logo" alt="logo"/>
-            :
-            props.dataPass.url.filter(x => {
-              <input type="text" className="form-control" name="search" id="search" placeholder="search" />
-            })
-          }
+
+                <input onChange={(e) => props.getSearchByURL(e.target.value)} type="text" className="form-control" name="search" id="search" placeholder="search" />
+
       		<span className="glyphicon glyphicon-search form-control-feedback"></span>
       	</div>
       </form>
@@ -31,15 +24,15 @@ const Search = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log('my state in search: ', state.getStorePassword.StoreAddPassword);
+  console.log('my state in search: ', state.getStorePassword);
   return {
-    dataPass: state.getStorePassword.StoreAddPassword
+    dataPass: state.getStorePassword.StorePassword
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getSearchByURL: (SearchByName) => dispatch(getSearchByURL())
+    getSearchByURL: (SearchByName) => dispatch(getSearchByURL(SearchByName))
   }
 }
 
