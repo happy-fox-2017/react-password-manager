@@ -1,16 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux'
-import {postPasswordManagerAsync as postPm} from "../actions"
+import {postPasswordManagerAsync as postPm,  putPasswordManagerAsync as putPm} from "../actions"
 
 class AddPassword extends React.Component {
   constructor(){
     super()
     this.state = {
-      url: "",
-      username: "",
-      password: ""
+      newPassword: {
+        url: "",
+        username: "",
+        password: ""
+      }, 
+      detailPassword: {
+        url: "",
+        username: "",
+        password: ""
+      }
     }
+    
   }
   changeInput(event){
     this.setState({[event.target.name]: event.target.value})
@@ -21,6 +29,20 @@ class AddPassword extends React.Component {
     document.getElementById('url').value = ""
     document.getElementById('username').value = ""
     document.getElementById('password').value = ""
+  }
+  
+  dataShow(){
+    if(this.props.act === "update"){
+      document.getElementById('url').value = this.props.detailPm.url
+      document.getElementById('username').value = this.props.detailPm.username
+      document.getElementById('password').value =this.props.detailPm.password 
+    } else if(this.props.act === "add") {
+      this.clearInput()
+    }
+  }
+  
+  componentWillUpdate () {
+    this.dataShow()
   }
   
   render () {
@@ -50,7 +72,7 @@ class AddPassword extends React.Component {
             <div style={{margin: "40px 0px 0px 160px"}}>
               <Link to= "/mainmenu">
                 <button className="button is-info" style={{margin : "0px 19px 0px -36px"}}>Back</button>
-                <button className="button is-primary" style={{margin : "0px 19px 0px 4px"}} onClick={() => this.props.postPm(this.state)}>Submit</button>
+                <button className="button is-primary" style={{margin : "0px 19px 0px 4px"}} onClick={() => (this.props.act === "add") ? this.props.postPm(this.state) : this.props.putPm(this.props.detailPm.id,this.state) }>Submit</button>
               </Link>
               <button className="button is-danger" onClick={() => this.clearInput()}>Reset</button>
             </div>
@@ -63,8 +85,17 @@ class AddPassword extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    postPm: (data) => dispatch(postPm(data))
+    postPm: (data) => dispatch(postPm(data)),
+    putPm: (id, data) => dispatch(putPm(id, data))
   }
 }
 
-export default connect(null,mapDispatchToProps)(AddPassword);
+const mapStateToProps = (state) => {
+  console.log('ini nih: ',state.passwordManager.password_detail.url);
+  return {
+    detailPm: state.passwordManager.password_detail,
+    act: state.passwordManager.action_password_manager.action
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddPassword);

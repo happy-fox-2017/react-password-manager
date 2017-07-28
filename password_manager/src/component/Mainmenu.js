@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { addPasswordManager as AddPm } from '../actions'
 import { connect } from 'react-redux'
-import { getPasswordManagerAsync, deletePasswordManager} from '../actions'
+import { getPasswordManagerAsync, deletePasswordManager, getByIdPasswordManager, changeAction} from '../actions'
 
 class Mainmenu extends React.Component {
   date_converter (Tanggal){    
@@ -62,7 +62,11 @@ class Mainmenu extends React.Component {
                     <td>{this.date_converter(data.createdAt)}</td>
                     <td>{this.date_converter(data.updatedAt)}</td>
                     <td>
-                      <button>Update</button> 
+                      <Link to="/addpassword">
+                        <button onClick={() => {
+                          this.props.changeAction({"action":"update"})
+                          this.props.getbyid(data.id)}}>Update</button>
+                      </Link> 
                       <Link to="/mainmenu">
                         <button onClick={() => this.props.deletepm(data.id)}>Delete</button>
                       </Link>
@@ -75,7 +79,7 @@ class Mainmenu extends React.Component {
           <div className="block">
             <Link to="/"> <button className="button is-danger" 
               style={{margin:"0px 10px"}}> Back </button> </Link>
-            <Link to="/addpassword"><button className="button is-warning">Add Password</button></Link>
+            <Link to="/addpassword"><button className="button is-warning" onClick={() => this.props.changeAction({"action":"add"})}>Add Password</button></Link>
           </div>
         </div>
       </div>
@@ -92,7 +96,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getpm: () => dispatch(getPasswordManagerAsync()),
-    deletepm: (id) => dispatch(deletePasswordManager(id))
+    deletepm: (id) => dispatch(deletePasswordManager(id)),
+    getbyid: (id) => dispatch(getByIdPasswordManager(id)),
+    changeAction: (act) => dispatch(changeAction(act))
   }
 }
 
