@@ -1,7 +1,5 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
-  Route,
   Link
 } from 'react-router-dom'
 import kittens from '../kittens.jpg';
@@ -17,11 +15,11 @@ const index = () => {
         this app build with reactjs, tap getting started to go to the main page
       </p>
       <div className="btn-group">
-        <button className="btn btn-default btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <Link to="/home">
+        <Link to="/home">
+          <button className="btn btn-default btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             GET STARTED
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import Search from './Search'
 import Buttons from './Buttons'
 import store from '../stores'
-import { PasswordGetter } from '../actions'
+import { PasswordGetter, DeleteListPassword } from '../actions'
 import loading from '../loading.png'
 
 class Home extends Component {
@@ -54,7 +54,11 @@ class Home extends Component {
                 :
                 this.props.dataPass === "wait"
                 ?
-                <img src={loading} className="App-logo" alt="logo"/>
+                <div>
+                  <img src={loading} className="App-logo" alt="logo"
+
+                  />
+                </div>
                 :
                 this.props.dataPass.map((listPassword, index) => {
                   return (
@@ -65,8 +69,8 @@ class Home extends Component {
                       <td>{listPassword.password}</td>
                       <td>{listPassword.created}</td>
                       <td>{listPassword.updated}</td>
-                      <td className="tdButton"><a href="#" className="btn btn-primary edit"><span className="glyphicon glyphicon-pencil"></span> Edit</a></td>
-                      <td className="tdButton"><a href="#" className="btn btn-danger-delete"><span className="glyphicon glyphicon-trash"></span> Delete</a></td>
+                      <td className="tdButton"><button className="btn btn-primary edit"><span className="glyphicon glyphicon-pencil"></span> Edit</button></td>
+                      <td className="tdButton"><button onClick={(id) => this.props.hapusListPassword(listPassword.id) } className="btn btn-danger-delete"><span className="glyphicon glyphicon-trash"></span> Delete</button></td>
                     </tr>
 
 
@@ -92,7 +96,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    GetPasswordList: () => dispatch(PasswordGetter())
+    GetPasswordList: () => dispatch(PasswordGetter()),
+    hapusListPassword: (id) => dispatch(DeleteListPassword(id))
   }
 }
 

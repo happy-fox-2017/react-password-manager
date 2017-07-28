@@ -1,20 +1,12 @@
 {
   "password": [
     {
-      "id": 1,
-      "url": "http://erwar.id",
-      "username": "erwin",
-      "password": "erwin",
-      "created": "",
-      "updated": ""
-    },
-    {
-      "id": 2,
-      "url": "https://github.com",
-      "username": "erwinwahyura",
-      "password": "apaajahayoapakepo",
-      "created": "12-27-2000",
-      "updated": ""
+      "url": "default",
+      "username": "default",
+      "password": "default",
+      "created": "28 July 2017",
+      "updated": "28 July 2017",
+      "id": "07a4cf5e-d4de-58a2-9c99-fa6e96b2cadd"
     }
   ]
 }
