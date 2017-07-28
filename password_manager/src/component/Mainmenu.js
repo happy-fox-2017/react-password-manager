@@ -1,5 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { addPasswordManager as AddPm } from '../actions'
+import { connect } from 'react-redux'
+import { getPasswordManagerAsync} from '../actions'
 
 class Mainmenu extends React.Component {
   date_converter (Tanggal){    
@@ -11,6 +14,10 @@ class Mainmenu extends React.Component {
     var month = m_names[d.getMonth()];
     var year = d.getFullYear();
     return `${date} ${month} ${year}`;
+  }
+  
+  componentWillMount(){
+    this.props.getpm()
   }
   
   render() {
@@ -44,14 +51,18 @@ class Mainmenu extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td><a href="https:www.google.com" title="Google">www.google.com</a></td>
-                <td>Angga</td>
-                <td>1234456</td>
-                <td>{this.date_converter(new Date())}</td>
-                <td>{this.date_converter(new Date())}</td>
-              </tr>
+              {this.props.newPm.map(data => {
+                return (
+                  <tr key={data.id}>
+                    <td>{data.id}</td>
+                    <td><a href={data.url} title="Google">{data.url}</a></td>
+                    <td>{data.username}</td>
+                    <td>{data.password}</td>
+                    <td>{this.date_converter(data.createdAt)}</td>
+                    <td>{this.date_converter(data.updatedAt)}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
           <div className="block">
@@ -65,4 +76,18 @@ class Mainmenu extends React.Component {
   }
 }
 
-export default Mainmenu;
+const mapStateToProps = (state) => {
+  return {
+    newPm: state.passwordManager.password_manager
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getpm: () => dispatch(getPasswordManagerAsync())
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Mainmenu);
+
+// export default Mainmenu;
