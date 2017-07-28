@@ -36,8 +36,22 @@ function Password(state = initialState, action ) {
                     ...state.list_password.slice(action.index + 1)
                ] })
           case UPDATE_PASSWORD:
+               return Object.assign({}, state, {list_password: state.list_password.map((password, index) =>{
+                    if(index !== action.index) {
+                         return password
+                    }
+                    return {
+                         ...action.password
+                    }
+               })})
           case SEARCH_PASSWORD:
-          
+          let filtering = new RegExp(`${action.value}.*`)
+          let result = state.list_password.filter((password) => {
+               return filtering.test(password[action.key].toLowerCase())
+               })
+               return Object.assign({}, state, {list_password: result} )
+
+
           case SET_URL:
                return Object.assign({}, state , { url : action.value })
           case SET_USERNAME:

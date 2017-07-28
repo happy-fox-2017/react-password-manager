@@ -67,3 +67,82 @@ export function seedPasswordSuccess(value) {
           value
      }
 }
+
+export function seedPassword () {
+     return dispatch => {
+          return axios.get('http://localhost:4000/password')
+               .then(function(response) {
+                    dispatch(seedPasswordSuccess(response.data))
+               })
+     }
+}
+
+export function addPasswordSuccess(value) {
+     return {
+          type: ADD_PASSWORD,
+          value
+     }
+}
+
+export function addPassword(data) {
+     return dispatch => {
+          return axios.post('http://localhost:4000/password', {
+               url: data.url,
+               username: data.username,
+               password: data.password,
+               createdAt: new Date(),
+               updateAt: null
+          })
+          .then(function(response) {
+               dispatch(addPasswordSuccess(response.data))
+          })
+          .catch((err) => {
+               console.log(err)
+          })
+     }
+}
+
+export function deletePasswordSuccess(index) {
+     return {
+          type: REMOVE_PASSWORD,
+          index
+     }
+}
+
+export function deletePassword(data) {
+     return dispatch => {
+          return axios.delete('http://localhost:4000/password' + data.id)
+          .then(function(response) {
+               dispatch(deletePasswordSuccess(data.index))
+          })
+          .catch((err) => {
+               console.log(err)
+          })
+     }
+}
+
+export function updatePasswordSuccess(data) {
+     return dispatch => {
+          return axios.put('http://localhost:4000/password' + data.id, {
+               url: data.url,
+               username: data.username,
+               password: data.password,
+               createdAt: data.createdAt,
+               updateAt: new Date()
+          })
+          .then(function(response) {
+               let tmp = {}
+               tmp.password = response.password;
+               tmp.index = response.index;
+               dispatch(updatePasswordSuccess(tmp))
+          })
+     }
+}
+
+export function searchPasword(data) {
+     return {
+          type: SEARCH_PASSWORD,
+          key: data.key,
+          value: data.value
+     }
+}
