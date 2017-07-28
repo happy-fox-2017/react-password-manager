@@ -18,6 +18,20 @@ export const getPasswordManager = (data) => {
   }
 }
 
+export const postPasswordManagerAsync = (data) => {
+  console.log(data);
+  return (dispatch,getState) =>  {
+    const apiUrl = 'http://localhost:3000/password_manager'
+    axios.post(apiUrl, {...data, createdAt: new Date(), updatedAt: new Date()})
+    .then(res => {
+      dispatch(getPasswordManagerAsync())
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
+
 
 export const getPasswordManagerAsync = () => {
   return (dispatch, getState) => {
