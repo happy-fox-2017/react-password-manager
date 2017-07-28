@@ -1,0 +1,25 @@
+{
+  "name": "pass-manager",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bulma": "^0.4.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-logger": "^1.1.0",
+    "react-redux": "^5.0.5",
+    "react-scripts": "1.0.10",
+    "react-thunk": "^1.0.0",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.0.3",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "PORT=4000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

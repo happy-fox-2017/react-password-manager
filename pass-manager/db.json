@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "username": "Username",
+      "password": "Password",
+      "url": "username@password.com",
+      "created_at": "28 July 2017",
+      "updated_at": "28 July 2017",
+      "id": 1
+    },
+    {
+      "username": "Andrew",
+      "password": "asadaph",
+      "url": "hacktiv8@gmail.com",
+      "created_at": "28 July 2017",
+      "updated_at": "28 July 2017",
+      "id": 2
+    },
+    {
+      "username": "mas",
+      "password": "coba",
+      "url": "terus@gmail.com",
+      "created_at": "28 July 2017",
+      "updated_at": "28 July 2017",
+      "id": 3
+    }
+  ]
+}
