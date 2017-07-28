@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {addPassAsyncHanlder, getPassListAsyncHanlder} from '../actions/passList.js'
 
 class Form extends Component {
   constructor () {
@@ -10,10 +11,14 @@ class Form extends Component {
         username: '',
         password: '',
         createdAt: '',
-        UpdatedAt: ''
+        updatedAt: ''
       }
     }
     this.formChange = this.formChange.bind(this)
+  }
+
+  componentWillMount () {
+    this.props.getPassListAsyncHanlder()
   }
 
   render () {
@@ -31,21 +36,23 @@ class Form extends Component {
                 <label className='label'>
                   URL
                 </label>
-                <input className='input' type='text' placeholder='Input website url here...' value={this.state.url} onChange={this.formChange} name='url' />
+                <input className='input' type='text' placeholder='Input website url here...' value={this.state.form.url} onChange={this.formChange} name='url' />
               </div>
               <div className='field'>
                 <label className='label'>
                   Username
                 </label>
-                <input className='input' type='text' placeholder='Input username here...' value={this.state.username} onChange={this.formChange} name='username' />
+                <input className='input' type='text' placeholder='Input username here...' value={this.state.form.username} onChange={this.formChange} name='username' />
               </div>
               <div className='field'>
                 <label className='label'>
                   Password
                 </label>
-                <input className='input' type='password' placeholder='Input password here...' value={this.state.password} onChange={this.formChange} name='password' />
+                <input className='input' type='password' placeholder='Input password here...' value={this.state.form.password} onChange={this.formChange} name='password' />
               </div>
-              <button className='button is-primary'> Submit </button>
+              <button className='button is-primary' onClick={() => {
+                this.props.addPassAsyncHanlder(this.state.form)
+              }}> Submit </button>
             </div>
           </div>
         </div>
@@ -84,8 +91,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPass: (form) => {
-      dispatch.addPass(form)
+    addPassAsyncHanlder: (form) => {
+      dispatch(addPassAsyncHanlder(form))
+    },
+    getPassListAsyncHanlder: () => {
+      dispatch(getPassListAsyncHanlder())
     }
   }
 }
