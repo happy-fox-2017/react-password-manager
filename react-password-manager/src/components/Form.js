@@ -54,21 +54,20 @@ class Form extends Component {
   }
 
   formChange (event) {
+    const oldState = this.state.form
+    let newState = {}
     switch (event.target.name) {
       case 'url':
-        this.setState({
-          ...this.state.form, URL: event.target.value
-        })
+        newState = {...oldState, URL: event.target.value}
+        this.setState({form: newState})
         break
       case 'username':
-        this.setState({
-          ...this.state.form, username: event.target.value
-        })
+        newState = {...oldState, username: event.target.value}
+        this.setState({form: newState})
         break
       case 'password':
-        this.setState({
-          ...this.state.form, password: event.target.value
-        })
+        newState = {...oldState, password: event.target.value}
+        this.setState({form: newState})
         break
       default:
         console.log('Event target miss')
