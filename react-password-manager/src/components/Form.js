@@ -15,6 +15,8 @@ class Form extends Component {
       }
     }
     this.formChange = this.formChange.bind(this)
+    this.passwordVer = this.passwordVer.bind(this)
+    this.passwordChange = this.passwordChange.bind(this)
   }
 
   componentWillMount () {
@@ -24,7 +26,7 @@ class Form extends Component {
   render () {
     return (
       <div className='columns'>
-        <div className='column is-4 is-offset-4'>
+        <div className='column is-6 is-offset-3'>
           <div className='card'>
             <header className='card-header'>
               <p className='card-header-title'>
@@ -48,16 +50,51 @@ class Form extends Component {
                 <label className='label'>
                   Password
                 </label>
-                <input className='input' type='password' placeholder='Input password here...' value={this.state.form.password} onChange={this.formChange} name='password' />
+                <input className='input' type='password' placeholder='Input password here...' value={this.state.form.password} onChange={this.passwordChange} name='password' />
               </div>
-              <button className='button is-primary' onClick={() => {
-                this.props.addPassAsyncHanlder(this.state.form)
-              }}> Submit </button>
+              <label className='checkbox' disabled>
+                <input type='checkbox' disabled checked='' />
+              Password harus memiliki setidaknya satu karakter huruf besar (upper-case)
+              </label>
+              <label className='checkbox' disabled>
+                <input type='checkbox' disabled checked='' />
+              Password harus memiliki setidaknya satu karakter huruf kecil (lower-case)
+              </label>
+              <label className='checkbox' disabled>
+                <input type='checkbox' disabled checked='' />
+              Password harus memiliki setidaknya satu karakter spesial (#$@!&..)
+              </label>
+              <label className='checkbox' disabled>
+                <input type='checkbox' disabled checked='' />
+              Password harus memiliki setidaknya satu angka
+              </label><label className='checkbox' disabled>
+                <input id='charLength' type='checkbox' disabled checked='' />
+              Password harus memiliki panjang lebih dari 5 karakter
+              </label>
+              <footer className='card-footer'>
+                <button className='button is-primary card-footer-item' onClick={() => {
+                  this.props.addPassAsyncHanlder(this.state.form)
+                }}> Submit </button>
+              </footer>
             </div>
           </div>
         </div>
       </div>
     )
+  }
+
+  passwordChange (event) {
+    this.formChange(event)
+    this.passwordVer(event)
+  }
+
+  passwordVer (event) {
+    const lowCase = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/
+    if (event.target.value.length > 5) {
+      console.log('Length > 5')
+    } else if (lowCase.test(event.target.value)) {
+      console.log('contain atleast 1 lower case')
+    }
   }
 
   formChange (event) {
@@ -80,7 +117,6 @@ class Form extends Component {
         console.log('Event target miss')
     }
   }
-
 }
 
 const mapStateToProps = (state) => {

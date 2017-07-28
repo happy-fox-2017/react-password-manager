@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+
+import {getPassListAsyncHanlder} from '../actions/passList.js'
 
 class List extends Component {
+
+  componentWillMount () {
+    this.props.getPassListAsyncHanlder()
+  }
 
   render () {
     return (
       <div>
-        {this.props.passList.map((pass) => {
+        {this.props.passListReducer.map((pass) => {
           return <tr>
             <td>{pass.url}</td>
             <td>{pass.username}</td>
@@ -19,4 +26,18 @@ class List extends Component {
   }
 }
 
-export default List
+const mapStateToProps = (state) => {
+  return {
+    passListReducer: state.passListReducer
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPassListAsyncHanlder: () => {
+      dispatch(getPassListAsyncHanlder())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List)
