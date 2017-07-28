@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { addPasswordManager as AddPm } from '../actions'
 import { connect } from 'react-redux'
-import { getPasswordManagerAsync} from '../actions'
+import { getPasswordManagerAsync, deletePasswordManager} from '../actions'
 
 class Mainmenu extends React.Component {
   date_converter (Tanggal){    
@@ -48,6 +48,7 @@ class Mainmenu extends React.Component {
                 <th>Password</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -60,6 +61,12 @@ class Mainmenu extends React.Component {
                     <td>{data.password}</td>
                     <td>{this.date_converter(data.createdAt)}</td>
                     <td>{this.date_converter(data.updatedAt)}</td>
+                    <td>
+                      <button>Update</button> 
+                      <Link to="/mainmenu">
+                        <button onClick={() => this.props.deletepm(data.id)}>Delete</button>
+                      </Link>
+                    </td>
                   </tr>
                 )
               })}
@@ -84,7 +91,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getpm: () => dispatch(getPasswordManagerAsync())
+    getpm: () => dispatch(getPasswordManagerAsync()),
+    deletepm: (id) => dispatch(deletePasswordManager(id))
   }
 }
 
