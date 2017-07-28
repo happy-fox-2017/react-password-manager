@@ -1,0 +1,20 @@
+{
+  "password_manager": [
+    {
+      "url": "https://google.com",
+      "username": "Antoni Angga",
+      "password": "123455112",
+      "createdAt": "2017-07-28T11:49:09.597Z",
+      "updatedAt": "2017-07-28T11:49:09.597Z",
+      "id": 1
+    },
+    {
+      "url": "https://google.com",
+      "username": "Antoni Angga",
+      "password": "123455112",
+      "createdAt": "2017-07-28T11:49:09.597Z",
+      "updatedAt": "2017-07-28T11:49:09.597Z",
+      "id": 2
+    }
+  ]
+}
