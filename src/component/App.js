@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 
 import { NoMatch } from './404'
 import ContainerList from './ContainerList'
+import ContainerForm from './ContainerForm'
 import Store from '../stores/index'
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ContainerList} />
+          <Route path="/form" component={ContainerForm} />
           <Route component={NoMatch}/>
         </Switch>
       </BrowserRouter>

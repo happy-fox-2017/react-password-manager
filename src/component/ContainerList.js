@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { fetchPassword, deletePassword } from '../actions/passwordActions'
 import { ListPassword } from './ListPassword'
@@ -14,6 +15,22 @@ class ContainerList extends React.Component {
       <div className="container">
         <h1 className="title">React Password Manager List</h1>
         <div className="container">
+          <div className="tabs is-boxed">
+            <ul>
+              <li className="is-active">
+                <a>
+                  <span className="icon is-small"><i className="fa fa-unlock-alt"></i></span>
+                  <span>Password List</span>
+                </a>
+              </li>
+              <li>
+                <Link to="/form">
+                  <span className="icon is-small"><i className="fa fa-plus"></i></span>
+                  <span>Add New Password</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
           <table className="table">
             <thead>
               <tr>
@@ -57,4 +74,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainerList);
+export default connect(mapStateToProps, mapDispatchToProps)(ContainerList)

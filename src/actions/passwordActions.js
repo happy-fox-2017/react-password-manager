@@ -43,3 +43,7 @@ export const deletePassword = (id) => {
       })
   }
 }
+
+export const addPassword = (newPassword) => {
+  return newPassword
+}
