@@ -1,0 +1,20 @@
+{
+  "Passwords": [
+    {
+      "id": 1,
+      "url": "http://hacktiv8.com",
+      "username": "admin",
+      "password": "admin",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "url": "http://tirtawiryaputra.com",
+      "username": "admin",
+      "password": "admin",
+      "created_at": null,
+      "updated_at": null,
+      "id": 2
+    }
+  ]
+}
