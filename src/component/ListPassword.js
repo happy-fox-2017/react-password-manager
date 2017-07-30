@@ -3,49 +3,53 @@ import React from 'react'
 export const ListPassword = (props) => {
   if(props.fetching === true) {
     return (
-      <tr>
-        <th>
-        </th>
-        <td>
-        </td>
-        <td>
-          Loading..
-        </td>
-        <td>
-          Fetching Data..
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <th>
+          </th>
+          <td>
+          </td>
+          <td>
+            Loading..
+          </td>
+          <td>
+            Fetching Data..
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
     )
   } else if(props.fetching === false && props.error !== null) {
     return (
-      <tr>
-        <th>
-        </th>
-        <td>
-        </td>
-        <td>
-          Uh Oh..
-        </td>
-        <td>
-          Error has occured..
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <th>
+          </th>
+          <td>
+          </td>
+          <td>
+            Uh Oh..
+          </td>
+          <td>
+            Error has occured..
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
     )
   } else {
     console.log(props, "Props");
     console.log(props.data, "Data");
     const passwords = props.data.map((element, index) => {
       return (
-        <tr>
-          <th key={element.id}>
+        <tr key={element.id}>
+          <th>
             {index + 1}
           </th>
           <td>
@@ -58,7 +62,7 @@ export const ListPassword = (props) => {
             {element.password}
           </td>
           <td><a className="button is-primary is-outlined">Edit</a></td>
-          <td><a className="button is-danger is-outlined">Delete</a></td>
+          <td><a onClick={() => props.deletePassword(element.id)} className="button is-danger is-outlined">Delete</a></td>
         </tr>
       )
     })

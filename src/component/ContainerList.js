@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPassword } from '../actions/passwordActions'
+import { fetchPassword, deletePassword } from '../actions/passwordActions'
 import { ListPassword } from './ListPassword'
 
 class ContainerList extends React.Component {
@@ -30,6 +30,8 @@ class ContainerList extends React.Component {
               fetching={this.props.fetching}
               fetched={this.props.fetched}
               error={this.props.error}
+              message={this.props.message}
+              deletePassword={this.props.deletePassword}
             />
           </table>
         </div>
@@ -43,12 +45,16 @@ const mapStateToProps = (state) => {
     data: state.passwordList.data,
     fetching: state.passwordList.fetching,
     fetched: state.passwordList.fetched,
-    error: state.passwordList.error
-  };
+    error: state.passwordList.error,
+    message: state.passwordList.message
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { getPassword: () => {dispatch(fetchPassword())} }
+  return {
+    getPassword: () => dispatch(fetchPassword()),
+    deletePassword: (id) => dispatch(deletePassword(id))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContainerList);

@@ -20,3 +20,26 @@ export const fetchPassword = () => {
       })
   }
 }
+
+export const deletePassword = (id) => {
+  return dispatch => {
+    console.log(id, "ID")
+    dispatch({type: 'DELETE_PASSWORD'})
+    Axios.delete(API + "/" + id)
+      .then((res) => {
+        dispatch({
+          type: 'DELETE_SUCCESS',
+          payload: res.data
+        })
+      })
+      .then(() => {
+        dispatch(fetchPassword())
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'DELETE_ERROR',
+          payload: error
+        })
+      })
+  }
+}
