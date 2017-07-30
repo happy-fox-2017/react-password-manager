@@ -11,17 +11,34 @@ class ContainerList extends React.Component {
 
   render() {
     return (
-      <ListPassword
-        data={this.props.data}
-        fetching={this.props.fetching}
-        fetched={this.props.fetched}
-        error={this.props.error}
-      />
+      <div className="container">
+        <h1 className="title">React Password Manager List</h1>
+        <div className="container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>URL</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Action</th>
+                <th></th>
+              </tr>
+            </thead>
+            <ListPassword
+              data={this.props.data}
+              fetching={this.props.fetching}
+              fetched={this.props.fetched}
+              error={this.props.error}
+            />
+          </table>
+        </div>
+      </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     data: state.passwordList.data,
     fetching: state.passwordList.fetching,
@@ -30,7 +47,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return { getPassword: () => {dispatch(fetchPassword())} }
 }
 
