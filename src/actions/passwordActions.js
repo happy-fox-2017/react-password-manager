@@ -27,10 +27,10 @@ export const fetchPassword = () => {
   return dispatch => {
     dispatch({type: 'FETCH_PASSWORD'})
     Axios.get(API)
-      .then((data) => {
+      .then((res) => {
         dispatch({
           type: 'FETCH_SUCCESS',
-          payload: data
+          payload: res.data
         })
       })
       .catch((error) => {

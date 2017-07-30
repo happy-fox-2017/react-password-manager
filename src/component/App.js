@@ -1,24 +1,15 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { NoMatch } from './404'
-import { ContainerForm  as Home } from './ContainerForm'
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         Hello World
-//       </div>
-//     );
-//   }
-// }
+import ContainerList from './ContainerList'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={ContainerList} />
         <Route component={NoMatch}/>
       </Switch>
     </BrowserRouter>
