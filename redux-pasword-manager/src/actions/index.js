@@ -122,6 +122,14 @@ export function deletePassword(data) {
 }
 
 export function updatePasswordSuccess(data) {
+     return {
+          type: UPDATE_PASSWORD,
+          password: data.password,
+          index: data.index
+     }
+     }
+
+export function updatePassword(data) {
      return dispatch => {
           return axios.put('http://localhost:4000/password' + data.id, {
                url: data.url,
