@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class PasswordForm extends React.Component {
+export default class AddForm extends React.Component {
   _date_converter() {
     let d = new Date()
     let m_names = ["January", "February", "March",

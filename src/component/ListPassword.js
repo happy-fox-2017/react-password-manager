@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const ListPassword = (props) => {
   if(props.fetching === true) {
@@ -75,7 +76,7 @@ export const ListPassword = (props) => {
           <td>
             {element.updated_at || "-"}
           </td>
-          <td><a className="button is-primary is-outlined">Edit</a></td>
+          <td><Link to={"/update/" + element.id} className="button is-primary is-outlined">Edit</Link></td>
           <td><a onClick={() => props.deletePassword(element.id)} className="button is-danger is-outlined">Delete</a></td>
         </tr>
       )

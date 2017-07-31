@@ -26,6 +26,12 @@ export default function passwordReducer(state = initialState, action) {
       return {...state, fetching: false, fetched: true, message: 'add success', error: null}
     case 'ADD_ERROR':
       return {...state, fetching: false, fetched: true, error: action.payload}
+    case 'UPDATE_PASSWORD':
+      return {...state, fetching: true, fetched: false}
+    case 'UPDATE_SUCCESS':
+      return {...state, fetching: false, fetched: true, message: 'update success', error: null}
+    case 'UPDATE_ERROR':
+      return {...state, fetching: false, fetched: true, error: action.payload}
     default:
       return state
   }

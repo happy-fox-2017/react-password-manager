@@ -62,3 +62,22 @@ export const addPassword = (newPassword) => {
       })
   }
 }
+
+export const updatePassword = (id, newPassword) => {
+  return dispatch => {
+    dispatch({type: 'UPDATE_PASSWORD'})
+    Axios.put(API+ "/" + id, newPassword)
+      .then((res) => {
+        dispatch({
+          type: 'UPDATE_SUCCESS',
+          payload: res.data
+        })
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'UPDATE_ERROR',
+          payload: error
+        })
+      })
+  }
+}

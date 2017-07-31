@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { addPassword } from '../actions/passwordActions'
-import PasswordForm from './PasswordForm'
+import AddForm from './AddForm'
 
-class ContainerForm extends React.Component {
+class ContainerAdd extends React.Component {
   render() {
     return (
       <div className="container">
@@ -27,7 +27,7 @@ class ContainerForm extends React.Component {
               </li>
             </ul>
           </div>
-          <PasswordForm addPassword={this.props.addPassword}/>
+          <AddForm addPassword={this.props.addPassword}/>
         </div>
       </div>
     )
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ContainerForm)
+export default connect(null, mapDispatchToProps)(ContainerAdd)
