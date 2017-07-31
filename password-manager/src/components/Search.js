@@ -13,9 +13,7 @@ const Search = (props) => {
       <form action="" className="search-form">
         <div className="form-group has-feedback">
     		<label className="sr-only">Search</label>
-
-                <input onChange={(e) => props.getSearchByURL(e.target.value)} type="text" className="form-control" name="search" id="search" placeholder="search" />
-
+          <input onChange={(e) => props.getSearchByURL(e.target.value)} type="text" className="form-control" name="search" id="search" placeholder="search" />
       		<span className="glyphicon glyphicon-search form-control-feedback"></span>
       	</div>
       </form>
