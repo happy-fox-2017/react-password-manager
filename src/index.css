@@ -1,3 +1,10 @@
 .container {
   margin: 4em auto;
 }
+
+.box {
+  width: 75%;
+  margin: 0 auto;
+  padding-right: 10em;
+  padding-left: 5em;
+}

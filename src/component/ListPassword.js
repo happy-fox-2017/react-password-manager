@@ -10,10 +10,14 @@ export const ListPassword = (props) => {
           <td>
           </td>
           <td>
+          </td>
+          <td>
             Loading..
           </td>
           <td>
             Fetching Data..
+          </td>
+          <td>
           </td>
           <td>
           </td>
@@ -31,10 +35,14 @@ export const ListPassword = (props) => {
           <td>
           </td>
           <td>
+          </td>
+          <td>
             Uh Oh..
           </td>
           <td>
             Error has occured..
+          </td>
+          <td>
           </td>
           <td>
           </td>
@@ -60,6 +68,12 @@ export const ListPassword = (props) => {
           </td>
           <td>
             {element.password}
+          </td>
+          <td>
+            {element.created_at}
+          </td>
+          <td>
+            {element.updated_at || "-"}
           </td>
           <td><a className="button is-primary is-outlined">Edit</a></td>
           <td><a onClick={() => props.deletePassword(element.id)} className="button is-danger is-outlined">Delete</a></td>

@@ -1,28 +1,20 @@
 {
   "Passwords": [
     {
-      "id": 1,
       "url": "http://hacktiv8.com",
       "username": "admin",
       "password": "admin",
-      "created_at": null,
-      "updated_at": null
+      "created_at": "31 July 2017",
+      "updated_at": null,
+      "id": 1
     },
     {
       "url": "http://tirtawiryaputra.com",
       "username": "admin",
       "password": "admin",
-      "created_at": null,
+      "created_at": "31 July 2017",
       "updated_at": null,
       "id": 2
-    },
-    {
-      "url": "http://google.com",
-      "username": "tes",
-      "password": "123",
-      "created_at": null,
-      "updated_at": null,
-      "id": 3
     }
   ]
 }

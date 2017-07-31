@@ -38,6 +38,8 @@ class ContainerList extends React.Component {
                 <th>URL</th>
                 <th>Username</th>
                 <th>Password</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th>Action</th>
                 <th></th>
               </tr>

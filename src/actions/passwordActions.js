@@ -45,5 +45,20 @@ export const deletePassword = (id) => {
 }
 
 export const addPassword = (newPassword) => {
-  return newPassword
+  return dispatch => {
+    dispatch({type: 'ADD_PASSWORD'})
+    Axios.post(API, newPassword)
+      .then((res) => {
+        dispatch({
+          type: 'ADD_SUCCESS',
+          payload: res.data
+        })
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'DELETE_ERROR',
+          payload: error
+        })
+      })
+  }
 }
