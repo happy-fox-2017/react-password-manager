@@ -1,11 +1,11 @@
 import {
      SEED_PASSWORD,
      ADD_PASSWORD,
-     REMOVE_PASSWORD,
      UPDATE_PASSWORD,
      REMOVE_PASSWORD,
      SET_URL,
      SET_USERNAME,
+     SEARCH_PASSWORD,
      SET_PASSWORD,
      SET_ID,
      RESET,
@@ -61,7 +61,7 @@ function Password(state = initialState, action ) {
           case SET_ID:
                return Object.assign({}, state , { id : action.value })
           case RESET:
-               return Object.assign({}, state , { id: null, url:'', username:'' password: '' })
+               return Object.assign({}, state , { id: null, url:'', username:'', password: '' })
           case SET_INDEX:
                return Object.assign({}, state , { index : action.value })
           case SET_CREATED:
@@ -71,3 +71,5 @@ function Password(state = initialState, action ) {
 
      }
 }
+
+export default Password
