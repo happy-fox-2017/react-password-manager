@@ -29,6 +29,12 @@ export default class AddForm extends React.Component {
     this.refs.password.value = ''
   }
 
+  _clearForm(e) {
+    this.refs.url.value = ''
+    this.refs.username.value = ''
+    this.refs.password.value = ''
+  }
+
   render() {
     return (
       <div className="box">
@@ -88,7 +94,7 @@ export default class AddForm extends React.Component {
             </a>
           </p>
           <p className="control">
-            <a className="button is-danger">
+            <a onClick={(e) => this._clearForm(e)} className="button is-danger">
               Clear
             </a>
           </p>

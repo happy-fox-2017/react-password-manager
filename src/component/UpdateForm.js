@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default class UpdateForm extends React.Component {
   _date_converter() {
@@ -88,9 +89,9 @@ export default class UpdateForm extends React.Component {
             </a>
           </p>
           <p className="control">
-            <a className="button is-danger">
-              Clear
-            </a>
+            <Link className="button is-danger" to="/">
+              Cancel
+            </Link>
           </p>
         </div>
         <br />
